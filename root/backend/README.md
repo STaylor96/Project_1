@@ -4,16 +4,16 @@
 # Project Requirements
 
 ## Functional Requirements
-Must be a full-stack solution consisting of:
--JavaScript (or Typescript) and Express
--MongoDB
--React
-Code should be available to a public GitHub repository
-Possesses all required CRUD functionality
-Handles edge cases effectively
+Must be a full-stack solution consisting of: <br>
+-JavaScript (or Typescript) and Express <br>
+-MongoDB <br>
+-React <br>
+Code should be available to a public GitHub repository <br>
+Possesses all required CRUD functionality <br>
+Handles edge cases effectively <br>
 
 ## Non-Functional Requirements
-Well documented code (JSDocs)
-Code upholds industry best practices (SOLID/DRY)
-Industry-Grade UI (User Interface)
-Intuitive UX (User Experience)
+Well documented code (JSDocs) <br>
+Code upholds industry best practices (SOLID/DRY) <br>
+Industry-Grade UI (User Interface) <br>
+Intuitive UX (User Experience) <br>
