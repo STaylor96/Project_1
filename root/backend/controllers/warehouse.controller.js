@@ -2,12 +2,12 @@
 const Warehouse = require('../models/Warehouse.model.js');
 
 // Read all warehouses
-const findAllWarehouses = async () => await Warehouse.find().populate('inventory');
+const findAllWarehouses = async () => await Warehouse.find().populate('inventory.product');
 
 // Read a specific warehouse by ID number
 const findWarehouseById = async id => {
     try {
-        const warehouse = await Warehouse.findById(id);
+        const warehouse = await Warehouse.findById(id).populate('inventory.product');
 
         if (product == null){
             throw {status: 204, msg: 'Unable to find warehouse.'}
