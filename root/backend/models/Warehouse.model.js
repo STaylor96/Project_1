@@ -13,8 +13,11 @@ const warehouseSchema = new Schema({
         zip: String
     },
     capacity: {                             
-        current: Number,                    // Current storage occupied
-        maximum: Number                     // Maximum storage capacity
+        type: {
+            current: Number,                    // Current storage occupied
+            maximum: Number                     // Maximum storage capacity
+        },
+        validate: []
     },
     inventory: [{                           
         product: {

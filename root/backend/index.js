@@ -1,10 +1,12 @@
 // Import statements
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 // Initialize the application
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Initialize the application routing

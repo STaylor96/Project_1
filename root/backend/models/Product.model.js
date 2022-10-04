@@ -14,8 +14,7 @@ const productSchema = new Schema({
         cost: Number,                                              // Cost to the company
         sale_price: Number                                         // Sale price
     },
-    size: Number,                                                  // Amount of warehouse storage space the product occupies
-    imageUrl: String                                               // Image URL
+    size: Number                                                   // Amount of warehouse storage space the product occupies
 });
 
 // Generate and export "Product"
