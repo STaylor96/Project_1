@@ -1,9 +1,8 @@
 import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
 import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Warehouse = ({warehouse: {manager, phone, location, capacity}}) => {
+const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
         <>
             <TableRow>
