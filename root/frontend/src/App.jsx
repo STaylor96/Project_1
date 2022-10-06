@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Catalog, Warehouses, PageNotFound } from './pages';
+import { Catalog, Warehouses, PageNotFound } from './pages';
 import { AppNav } from './components/Nav';
 
 export const App = () => {
@@ -7,8 +7,7 @@ export const App = () => {
       <BrowserRouter>
         <AppNav />
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/warehouses" element={<Warehouses />}/>
+          <Route path="/" element={<Warehouses />}/>
           <Route path="/products" element={<Catalog />}/>
           <Route path="*" element={<PageNotFound />}/>
         </Routes>
