@@ -10,10 +10,7 @@ const productSchema = new Schema({
         type: String,
         enum: ['Guitar', 'Bass', 'Amplifier/Effect', 'Accessory']  // This validation method requires the value of "category" to be one of these
     },
-    price: {                                                       
-        cost: Number,                                              // Cost to the company
-        sale_price: Number                                         // Sale price
-    },
+    price: Number,                                                      
     size: Number                                                   // Amount of warehouse storage space the product occupies
 });
 

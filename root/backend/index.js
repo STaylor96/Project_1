@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Initialize the application routing
 app.use('/products', require('./routes/product.route.js'));
-app.use('/warehouses', require('./routes/warehouse.route.js'));
+app.use('/', require('./routes/warehouse.route.js'));
 
 
 /*

@@ -1,7 +1,7 @@
 // Import statements
 const mongoose = require('mongoose');
 const router = require('express').Router();
-const { findAllWarehouses, findWarehouseById, updateWarehouse } = require('../controllers/warehouse.controller.js');
+const { findAllWarehouses, findWarehouseById, updateWarehouse, createWarehouse} = require('../controllers/warehouse.controller.js');
 
 // Middleware function
 const validateObjectId = (req, res, next) => {
@@ -15,10 +15,19 @@ const validateObjectId = (req, res, next) => {
 // GET request - Reads all warehouses
 router.get('/', async (req, res) => {
     try {
-        const warehouses = findAllWarehouses();
-        res.status(200).json(warehouses);
+        const warehouses = await findAllWarehouses();
+        res.json(warehouses);
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+
+router.post('/', async (req, res) => {
+    try{
+        const warehouse = await createWarehouse(req.body);
+        res.status(201).json(warehouse);
+    } catch (err){
+        res.status(err?.status ?? 500).json(err);
     }
 });
 

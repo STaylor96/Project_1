@@ -9,8 +9,7 @@ export const ProductTable = () => {
                     <TableCell>Manufacturer</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Category</TableCell>
-                    <TableCell>Cost</TableCell>
-                    <TableCell>Sale_Price</TableCell>
+                    <TableCell>Price</TableCell>
                     <TableCell>Size</TableCell>
                 </TableRow>
             </TableHead>

@@ -6,9 +6,9 @@ export const WarehouseTable = () => {
         <Table>
             <TableHead>
                 <TableRow>
+                    <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell>Address</TableCell>
                     <TableCell>Capacity_Current</TableCell>
                     <TableCell>Capacity_Max</TableCell>
                 </TableRow>

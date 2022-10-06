@@ -6,18 +6,12 @@ const Schema = mongoose.Schema;
 const warehouseSchema = new Schema({
     manager: String,                       // The name of the warehouse manager
     phone: String,                         // Contact information for the warehouse 
-    address: {                             //
-        city: String,
-        state: String,
-        address: String,
-        zip: String
-    },
+    location: String,
     capacity: {                             
         type: {
             current: Number,                    // Current storage occupied
             maximum: Number                     // Maximum storage capacity
-        },
-        validate: []
+        }
     },
     inventory: [{                           
         product: {
