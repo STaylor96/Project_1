@@ -19,7 +19,7 @@ const findWarehouseById = async id => {
     try {
         const warehouse = await Warehouse.findById(id).populate('inventory');
 
-        if (product == null){
+        if (warehouse == null){
             throw {status: 204, msg: 'Unable to find warehouse.'}
         }
         return warehouse;

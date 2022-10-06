@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Catalog, Warehouses, PageNotFound } from './pages';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import { Catalog, Warehouses, Warehouse_Id, PageNotFound } from './pages';
 import { AppNav } from './components/Nav';
 
 export const App = () => {
@@ -9,6 +9,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Warehouses />}/>
           <Route path="/products" element={<Catalog />}/>
+          <Route path="/:id" element={<Warehouse_Id />}/>
           <Route path="*" element={<PageNotFound />}/>
         </Routes>
       </BrowserRouter>

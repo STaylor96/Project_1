@@ -1,13 +1,13 @@
 import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
         <>
             <TableRow>
-                <Button>View</Button>
-                <TableCell>{location}</TableCell>
+                <TableCell><Button><Link to={`${_id}`}>{location}</Link></Button></TableCell>
                 <TableCell>{manager}</TableCell>
                 <TableCell>{phone}</TableCell>
                 <TableCell>{capacity?.current}</TableCell>
@@ -31,7 +31,6 @@ export const WarehouseTable = () => {
         <Table>
             <TableHead>
                 <TableRow>
-                    <TableCell></TableCell>
                     <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>

@@ -37,6 +37,7 @@ router.get('/:id', validateObjectId, async (req, res) => {
         const warehouse = await findWarehouseById(req.params.id);
         res.json(warehouse);
     } catch (err) {
+        console.log(err);
         res.status(err?.status ?? 500).json(err);
     }
 });
