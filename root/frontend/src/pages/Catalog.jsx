@@ -3,7 +3,7 @@ import { ProductTable } from "../components/Table/ProductTable";
 export const Catalog = () => {
     return (
         <>
-        <h1>This is the Catalog Page.</h1>
+        <h1>Catalog</h1>
 
         <ProductTable />
         </>
