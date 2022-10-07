@@ -1,4 +1,4 @@
-import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
+import {Table, TableBody, TableHead, TableRow, TableCell} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { ProductForm } from '../Form/ProductForm';
@@ -7,7 +7,7 @@ const Product = ({product: {_id, manufacturer, name, category, price, size}}) =>
     return(
         <>
         <TableRow>
-            <Button>Edit</Button>
+            <TableCell>{_id}</TableCell>
             <TableCell>{manufacturer}</TableCell>
             <TableCell>{name}</TableCell>
             <TableCell>{category}</TableCell>
@@ -32,7 +32,7 @@ export const ProductTable = () => {
         <Table>
             <TableHead>
                 <TableRow>
-                    <TableCell></TableCell>
+                    <TableCell>ID</TableCell>
                     <TableCell>Manufacturer</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Category</TableCell>

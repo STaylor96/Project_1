@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', validateObjectId, async (req, res) => {
     try {
         const product = await updateProduct(req.params.id, req.body);
-        res.json();
+        res.json(product);
     } catch {
         res.status(err?.status ?? 500).json(err);
     }
