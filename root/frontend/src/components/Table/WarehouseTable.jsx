@@ -1,7 +1,7 @@
 import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(

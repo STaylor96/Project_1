@@ -1,11 +1,10 @@
-import {Table, TableBody, TableHead, TableRow, TableCell} from '@mui/material';
+import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
-        <>
             <TableRow>
                 <TableCell>{location}</TableCell>
                 <TableCell>{manager}</TableCell>
@@ -13,22 +12,17 @@ const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
                 <TableCell>{capacity?.current}</TableCell>
                 <TableCell>{capacity?.maximum}</TableCell>
             </TableRow>
-        </>
     )
 }
 
-const Product = ({product: {_id, manufacturer, name, category, price, size}}, {warehouse: quantity}) => {
-    return(
-        <>
-            <TableRow>
-                <TableCell>{manufacturer}</TableCell>
-                <TableCell>{name}</TableCell>
-                <TableCell>{category}</TableCell>
-                <TableCell>{price}</TableCell>
-                <TableCell>{size}</TableCell>
-                <TableCell>{quantity}</TableCell>
-            </TableRow>
-        </>
+const Product = ({inventory: {product, quantity}}) => {
+    return (
+        <TableRow>
+            <TableCell>{product}</TableCell>
+            <TableCell>{quantity}</TableCell> 
+            <Button>+</Button>
+            <Button>-</Button>
+        </TableRow>
     )
 }
 
@@ -42,6 +36,7 @@ export const WarehouseIDTable = () => {
         axios.get(axiosURL)
             .then(res => {
                 setWarehouse(res.data);
+                console.log(res.data);
             })
             .catch(err => console.error(err));
     }, []);
@@ -65,15 +60,15 @@ export const WarehouseIDTable = () => {
             <label>Inventory: </label>
             <Table>
                 <TableHead>
-                    <TableCell>Manufacturer</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Category</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Size</TableCell>
+                    <TableCell>Product</TableCell>
                     <TableCell>Quantity</TableCell>
                 </TableHead>
                 <TableBody>
-
+                    {warehouse && warehouse.inventory? warehouse.inventory.map(product => {
+                        return (
+                            <Product key={product._id} inventory={product}></Product>
+                        )
+                    }) : null}
                 </TableBody>
             </Table>
         </>
