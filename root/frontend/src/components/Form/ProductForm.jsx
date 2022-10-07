@@ -1,35 +1,15 @@
+import axios from 'axios';
 import { useState } from 'react';
-import * as yup from 'yup';
 
 const category = [
-    <option>Select category...</option>,
+    <option>Select a category...</option>,
     <option>Guitar</option>,
     <option>Bass</option>,
     <option>Amplifier/Effect</option>,
     <option>Accessory</option>
 ];
 
-export const ProductForm = () => {
-
-    const productSchema = yup.object().shape({
-        productManufacturer: yup
-            .string()
-            .required(),
-        productName: yup
-            .string()
-            .required(),
-        productCategory: yup
-            .string()
-            .required(),
-        productPrice: yup
-            .number()
-            .required()
-            .positive(),
-        productSize: yup
-            .number()
-            .required()
-            .positive()
-    });
+export const ProductForm = ({setProductList}) => {
 
     const [productData, setProductData] = useState({
         productManufacturer: '',
@@ -41,7 +21,30 @@ export const ProductForm = () => {
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Success!');
+        try{
+            const res = await axios.post('http://localhost:9000/products', {
+                manufacturer: productData.productManufacturer,
+                name: productData.productName,
+                category: productData.productCategory,
+                price: productData.productPrice,
+                size: productData.productSize
+            });
+
+            setProductList(productList => [...productList, res.data]);
+            event.target.reset();
+            handleClear();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleClear = () => {
+        setProductData({
+            productManufacturer: '',
+            productName: '',
+            productPrice: 0.00,
+            productSize: 0
+        });
     }
 
     return (
@@ -84,10 +87,14 @@ export const ProductForm = () => {
                 id="product-size"
                 type="number"
                 value={productData.productSize}
-                onChange = {e => setProductData({... productData, productSize: e.target.value})}
+                onChange = {e => setProductData({...productData, productSize: e.target.value})}
                 />
             </div>
-            <button>Submit</button>
+            <div>
+                <button type="reset" onClick={handleClear}>Reset</button>
+                <button>Submit</button>
+            </div>
+            
         </form>
-    )
+    );
 }

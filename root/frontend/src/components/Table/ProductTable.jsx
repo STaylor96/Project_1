@@ -1,6 +1,7 @@
 import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
+import { ProductForm } from '../Form/ProductForm';
 
 const Product = ({product: {_id, manufacturer, name, category, price, size}}) => {
     return(
@@ -43,6 +44,7 @@ export const ProductTable = () => {
                 {productList.map(product => <Product key={product._id} product={product}/>)}
             </TableBody>
         </Table>
+        <ProductForm setProductList={setProductList} />
         </>
-    )
+    );
 }
