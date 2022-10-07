@@ -51,11 +51,11 @@ export const WarehouseIDTable = () => {
             <label>This Warehouse:</label>
             <Table>
                 <TableHead>
-                    <TableCell>Manufacturer</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Category</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Size</TableCell>
+                    <TableCell>Location</TableCell>
+                    <TableCell>Manager</TableCell>
+                    <TableCell>Phone</TableCell>
+                    <TableCell>Capacity (Used)</TableCell>
+                    <TableCell>Capacity (Max)</TableCell>
                 </TableHead>
                 <TableBody>
                     <Warehouse key={warehouse._id} warehouse={warehouse}></Warehouse>
