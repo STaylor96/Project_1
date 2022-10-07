@@ -9,6 +9,14 @@ const category = [
     <option>Accessory</option>
 ];
 
+class InputError extends Error {
+    name = 'InputError';
+
+    constructor(message){
+        super(message);
+    }
+}
+
 export const ProductForm = ({setProductList}) => {
 
     const [productData, setProductData] = useState({
@@ -22,6 +30,11 @@ export const ProductForm = ({setProductList}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
+            if(productData.productCategory === "Select a category..." || productData.productName === '' || productData.productManufacturer === ''
+                || productData.productPrice <= 0 || productData.productSize <= 0)
+            {
+                throw new InputError("Invalid data");
+            }
             const res = await axios.post('http://localhost:9000/products', {
                 manufacturer: productData.productManufacturer,
                 name: productData.productName,
