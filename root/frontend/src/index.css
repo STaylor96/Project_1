@@ -1,0 +1,52 @@
+.navbar {
+    background-color: rgb(200, 9, 107);
+    color: white;
+    font-size: 16px;
+    padding: 1.5em 1em; /* 30px 20px */
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item {
+    margin: 0em 0.5em;
+}
+
+.nav-link {
+    color: inherit;
+}
+
+.nav-link:hover {
+    color: lightgray;
+}
+
+.nav-section {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+h1 {
+    color: rgb(200, 100, 107);
+    text-align: center;
+}
+
+h2{
+    color: rgb(200, 100, 107);
+    text-align: center;
+}
+
+h3 {
+    font-size: 24px;
+    color: rgb(200, 100, 107);
+    text-align: left;
+}
+
+Table {
+    background-color: #fedbde;
+    font-weight: bold;
+}
+
+form {
+    background-color: #fedbde;
+    padding: 10px 10px 10px 10px;
+}

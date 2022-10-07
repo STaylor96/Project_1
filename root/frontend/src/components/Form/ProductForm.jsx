@@ -81,9 +81,10 @@ export const ProductForm = ({setProductList}) => {
     }
 
     return (
+        <>
+        <h2>Product Controls</h2>
         <form onSubmit={handleSubmit}>
-            <h2>Add/Edit Product</h2>
-            <h3>Currently: {isEdit ? 'Edit' : 'Add'}</h3>
+        
             <div>
                 <input type="checkbox" id="add" onChange={handleToggle}/>
                 <label htmlFor="add">Toggle Edit</label>  
@@ -143,5 +144,6 @@ export const ProductForm = ({setProductList}) => {
             </div>
             
         </form>
+       </>
     );
 }

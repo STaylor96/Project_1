@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Catalog, Warehouses, Warehouse_Id, PageNotFound } from './pages';
 import { AppNav } from './components/Nav';
+import './index.css';
 
 export const App = () => {
   return (

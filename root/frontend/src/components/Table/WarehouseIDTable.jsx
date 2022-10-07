@@ -1,7 +1,8 @@
-import {Table, TableBody, TableHead, TableRow, TableCell, Button} from '@mui/material';
+import {Table, TableBody, TableHead, TableRow, TableCell } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
+import { WarehouseForm } from '../Form/WarehouseForm';
 
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
@@ -20,8 +21,6 @@ const Product = ({inventory: {product, quantity}}) => {
         <TableRow>
             <TableCell>{product}</TableCell>
             <TableCell>{quantity}</TableCell> 
-            <Button>+</Button>
-            <Button>-</Button>
         </TableRow>
     )
 }
@@ -43,7 +42,7 @@ export const WarehouseIDTable = () => {
 
     return(
         <>
-            <label>This Warehouse:</label>
+            <h3>Warehouse #{warehouse._id}</h3>
             <Table>
                 <TableHead>
                     <TableCell>Location</TableCell>
@@ -71,6 +70,8 @@ export const WarehouseIDTable = () => {
                     }) : null}
                 </TableBody>
             </Table>
+
+            <WarehouseForm setWarehouse={setWarehouse}/>
         </>
     )
 }
