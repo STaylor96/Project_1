@@ -50,6 +50,7 @@ Table {
 form {
     background-color: #fedbde;
     padding: 10px 10px 10px 10px;
+    font-weight: bold;
 }
 
 form > div {

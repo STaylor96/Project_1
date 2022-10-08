@@ -33,9 +33,7 @@ export const WarehouseIDTable = () => {
     const [warehouse, setWarehouse] = useState([]);
     useEffect(() => {
         axios.get(axiosURL)
-            .then(res => {
-                setWarehouse(res.data);
-            })
+            .then(res => setWarehouse(res.data))
             .catch(err => console.error(err));
     }, []);
 

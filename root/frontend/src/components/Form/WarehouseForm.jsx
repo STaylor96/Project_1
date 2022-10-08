@@ -11,7 +11,7 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
     const [productData, setProductData] = useState({
         product: "",
         quantity: 0,
-    })
+    }, [warehouseLocation])
 
     const [isEdit, setIsEdit] = useState(false)
 
@@ -44,15 +44,30 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                     },
                     inventory: [...warehouseInventory, productData]
                 });
+
             } else {
+                let index = 0;
+                let productIndex = 0;
+                let willDelete = false;
                 for (let product of warehouseInventory)
                 {
                     if(product.product === productData.product)
                     {  
-                        product.quantity = productData.quantity    
-                    }       
+                        product.quantity = productData.quantity
+                        if (product.quantity === 0)
+                        {
+                            willDelete = true;
+                            productIndex = index;
+                        }
+                    } 
+                    index++; 
                 }
-
+                if (willDelete)
+                {
+                    warehouseInventory.splice(productIndex, 1);
+                    willDelete = false;
+                }
+            
                 res = await axios.put(axiosURL, {
                     manager: warehouseManager,
                     phone: warehousePhone,
@@ -62,13 +77,11 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                         maximum: warehouseCapacityMax
                     },
                     inventory: [...warehouseInventory]
-                });
-                console.log(res);
-                axios.get(axiosURL)
+                });   
+            }
+            axios.get(axiosURL)
                 .then(res => setWarehouse(res.data))
                 .catch(err => console.error(err));
-            }
-        
 
             event.target.reset();
             handleClear();
@@ -79,8 +92,8 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
     }
 
     const handleClear = () => {
+        console.log(warehouseInventory);
         setProductData({
-            productID: "",
             quantity: 0
         });
     }
