@@ -35,7 +35,6 @@ export const WarehouseIDTable = () => {
         axios.get(axiosURL)
             .then(res => {
                 setWarehouse(res.data);
-                console.log(res.data);
             })
             .catch(err => console.error(err));
     }, []);

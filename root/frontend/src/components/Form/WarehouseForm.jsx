@@ -9,8 +9,8 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
     const axiosURL = `http://localhost:9000${url.pathname}`;
 
     const [productData, setProductData] = useState({
-        product: "633f0482ce800d35d515a486",
-        quantity: 6,
+        product: "",
+        quantity: 0,
     })
 
     const [isEdit, setIsEdit] = useState(false)
@@ -27,7 +27,7 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                 throw new InputError("Invalid data");
             }
 
-            if(!isEdit) //
+            if(!isEdit) //Add product
             {
                 for (let product of warehouseInventory)
                 {
@@ -44,8 +44,29 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                     },
                     inventory: [...warehouseInventory, productData]
                 });
+            } else {
+                for (let product of warehouseInventory)
+                {
+                    if(product.product === productData.product)
+                    {  
+                        product.quantity = productData.quantity    
+                    }       
+                }
+
+                res = await axios.put(axiosURL, {
+                    manager: warehouseManager,
+                    phone: warehousePhone,
+                    location: warehouseLocation,
+                    capacity: {
+                        current: warehouseCapacityCur,
+                        maximum: warehouseCapacityMax
+                    },
+                    inventory: [...warehouseInventory]
+                });
                 console.log(res);
-    
+                axios.get(axiosURL)
+                .then(res => setWarehouse(res.data))
+                .catch(err => console.error(err));
             }
         
 
