@@ -20,7 +20,7 @@ const Product = ({inventory: {product, quantity}}) => {
     return (
         <TableRow>
             <TableCell>{product}</TableCell>
-            <TableCell>{quantity}</TableCell> 
+            <TableCell>{quantity}</TableCell>
         </TableRow>
     )
 }
@@ -56,10 +56,10 @@ export const WarehouseIDTable = () => {
                 </TableBody>
             </Table>
             
-            <label>Inventory: </label>
+            <h3>Inventory: </h3>
             <Table>
                 <TableHead>
-                    <TableCell>Product</TableCell>
+                    <TableCell>Product ID</TableCell>
                     <TableCell>Quantity</TableCell>
                 </TableHead>
                 <TableBody>
@@ -71,7 +71,9 @@ export const WarehouseIDTable = () => {
                 </TableBody>
             </Table>
 
-            <WarehouseForm setWarehouse={setWarehouse}/>
+            <WarehouseForm warehouseLocation={warehouse.location} warehouseManager={warehouse.manager} warehousePhone={warehouse.phone} 
+                warehouseCapacityMax={warehouse.capacity?.maximum} warehouseCapacityCur={warehouse.capacity?.current} warehouseInventory={warehouse.inventory} 
+                setWarehouse={setWarehouse} />
         </>
     )
 }

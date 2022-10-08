@@ -46,7 +46,12 @@ Table {
     font-weight: bold;
 }
 
+
 form {
     background-color: #fedbde;
     padding: 10px 10px 10px 10px;
+}
+
+form > div {
+    justify-content: space-between;
 }
