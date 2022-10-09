@@ -11,7 +11,7 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
     const [productData, setProductData] = useState({
         product: "",
         quantity: 0,
-    }, [warehouseLocation])
+    }, [])
 
     const [isEdit, setIsEdit] = useState(false)
 
@@ -92,7 +92,6 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
     }
 
     const handleClear = () => {
-        console.log(warehouseInventory);
         setProductData({
             quantity: 0
         });
