@@ -103,57 +103,69 @@ export const ProductForm = ({setProductList}) => {
                 <label htmlFor="add">Toggle Edit</label>  
             </div>
             <div>
-                <div>
-                    <label htmlFor="product-id">Id: </label>
-                    <input
+                <label htmlFor="product-id">Id: </label>
+            </div>
+            <div>
+                <input
                     id="product-id"
                     value={productData.ID}
                     onChange={e => setProductData({...productData, productID: e.target.value})}
                     placeholder="FOR EDITING ONLY"
-                    />
-                </div>
+                />
+            </div>
+            <div>
                 <label htmlFor="product-manufacturer">Manufacturer: </label>
+            </div>
+            <div>
                 <input 
                     id="product-manufacturer"
                     value={productData.productManufacturer}
                     onChange={e => setProductData({...productData, productManufacturer: e.target.value})}
-                    />
+                />
             </div>
             <div>
                 <label htmlFor="product-name">Name: </label>
+            </div>
+            <div>
                 <input 
                     id="product-name"
                     value={productData.productName}
                     onChange={e => setProductData({...productData, productName: e.target.value})}
-                    />
+                />
             </div>
             <div>
                 <label htmlFor="product-category">Category: </label>
+            </div>
+            <div>
                 <select id="product-category" onChange={e => setProductData({...productData, productCategory: e.target.value})}>
                     {category}
                 </select>
             </div>
             <div>
                 <label htmlFor="product-price">Price: </label>
+            </div>
+            <div>
                 <input 
-                id="product-price"
-                type="number"
-                value={productData.productPrice}
-                onChange = {e => setProductData({...productData, productPrice: e.target.value})}
+                    id="product-price"
+                    type="number"
+                    value={productData.productPrice}
+                    onChange = {e => setProductData({...productData, productPrice: e.target.value})}
                 />
             </div>
             <div>
                 <label htmlFor="product-size">Size: </label>
+            </div>
+            <div>
                 <input 
-                id="product-size"
-                type="number"
-                value={productData.productSize}
-                onChange = {e => setProductData({...productData, productSize: e.target.value})}
+                    id="product-size"
+                    type="number"
+                    value={productData.productSize}
+                    onChange = {e => setProductData({...productData, productSize: e.target.value})}
                 />
             </div>
             <div>
-                <button type="reset" onClick={handleClear}>Reset</button>
-                <button>Submit</button>
+                <button class="buttons" type="reset" onClick={handleClear}>Reset</button>
+                <button class="buttons">Submit</button>
             </div>
             
         </form>

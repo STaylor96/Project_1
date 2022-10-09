@@ -46,13 +46,16 @@ Table {
     font-weight: bold;
 }
 
-
 form {
     background-color: #fedbde;
+    color: black;
+    font-style: italic;
     padding: 10px 10px 10px 10px;
     font-weight: bold;
 }
 
-form > div {
-    justify-content: space-between;
+
+.buttons {
+    margin-top: 10px;
+    margin-right: 10px;
 }

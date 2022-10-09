@@ -146,30 +146,34 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
         <>
             <h2>Inventory Controls</h2>
             <form onSubmit={handleSubmit}>
-            <div>
-                <input type="checkbox" id="add" onChange={handleToggle}/>
-                <label htmlFor="add">Toggle Edit</label>  
-            </div>
+            <input type="checkbox" id="add" onChange={handleToggle}/>
+            <label htmlFor="add">Toggle Edit</label>  
             <div>
                 <div>
-                    <label htmlFor="product-id">Id: </label>
+                    <label htmlFor="product-id">ID: </label>
+                </div>
+                <div>
                     <input
-                    id="product-id"
-                    value={productData.product}
-                    onChange={e => setProductData({...productData, product: e.target.value})}
+                        id="product-id"
+                        value={productData.product}
+                        onChange={e => setProductData({...productData, product: e.target.value})}
                     />
                 </div>
-                <label htmlFor="quantity">Quantity: </label>
-                <input 
-                    id="quantity"
-                    type="number"
-                    value={productData.quantity}
-                    onChange={e => setProductData({...productData, quantity: e.target.value})}
+                <div>
+                    <label htmlFor="quantity">Quantity: </label>
+                </div>
+                <div>
+                    <input 
+                        id="quantity"
+                        type="number"
+                        value={productData.quantity}
+                        onChange={e => setProductData({...productData, quantity: e.target.value})}
                     />
+                </div>
             </div>
             <div>
-                <button type="reset" onClick={handleClear}>Reset</button>
-                <button>Submit</button>
+                <button class="buttons" type="reset" onClick={handleClear}>Reset</button>
+                <button class="buttons">Submit</button>
             </div>
             </form>
         </>
