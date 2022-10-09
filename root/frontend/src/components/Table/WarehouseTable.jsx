@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Represents a single row on the table
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
         <>
@@ -10,7 +11,6 @@ const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
                 <TableCell><Button><Link to={`${_id}`}>{location}</Link></Button></TableCell>
                 <TableCell>{manager}</TableCell>
                 <TableCell>{phone}</TableCell>
-                <TableCell>{capacity?.current}</TableCell>
                 <TableCell>{capacity?.maximum}</TableCell>
             </TableRow>
         </>
@@ -34,7 +34,6 @@ export const WarehouseTable = () => {
                     <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell>Capacity (Used)</TableCell>
                     <TableCell>Capacity (Max)</TableCell>
                 </TableRow>
             </TableHead>

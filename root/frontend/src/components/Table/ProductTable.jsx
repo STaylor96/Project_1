@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { ProductForm } from '../Form/ProductForm';
 
+// This represents an individual row on the product table
 const Product = ({product: {_id, manufacturer, name, category, price, size}}) => {
     return(
         <>
@@ -20,6 +21,7 @@ const Product = ({product: {_id, manufacturer, name, category, price, size}}) =>
 
 export const ProductTable = () => {
 
+    // State
     const [productList, setProductList] = useState([]);
     useEffect(() => {
         axios.get('http://localhost:9000/products')

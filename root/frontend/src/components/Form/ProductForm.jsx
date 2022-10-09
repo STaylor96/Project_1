@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
+// Populates the drop-down list
 const category = [
     <option>Select a category...</option>,
     <option>Guitar</option>,
@@ -9,6 +10,7 @@ const category = [
     <option>Accessory</option>
 ];
 
+// Called to prevent invalid user data
 class InputError extends Error {
     name = 'InputError';
 }
@@ -24,42 +26,53 @@ export const ProductForm = ({setProductList}) => {
         productSize: 0
     })
 
+    // Represents the state of the toggle box
     const [isEdit, setIsEdit] = useState(false);
     
     const handleSubmit = async (event) => {
+        //Prevent refresh
         event.preventDefault();
         let res = '';
         try{
+            // This will block invalid data 
             if(productData.productCategory === "Select a category..." || productData.productName === '' || productData.productManufacturer === ''
                 || productData.productPrice <= 0 || productData.productSize <= 0)
             {
                 throw new InputError("Invalid data");
             }
             
+            // Path for adding a new product, occurs if edit is unchecked
             if(!isEdit){
-                    res = await axios.post('http://localhost:9000/products', {
+                // Fire off post request to database
+                res = await axios.post('http://localhost:9000/products', {
                     manufacturer: productData.productManufacturer,
                     name: productData.productName,
                     category: productData.productCategory,
                     price: productData.productPrice,
                     size: productData.productSize
                 });
+                // Re-set state
                 setProductList(productList => [...productList, res.data]);
             }
+            // Path for editing a product, occurs if edit is checked
             else{
+                // Generate apporiate URL for put request
                 const axiosURL = `http://localhost:9000/products/${productData.productID}`
-                    res = await axios.put(axiosURL, {
+                // Fire off put request to database
+                res = await axios.put(axiosURL, {
                     manufacturer: productData.productManufacturer,
                     name: productData.productName,
                     category: productData.productCategory,
                     price: productData.productPrice,
                     size: productData.productSize
                 });
+                // Re-set state
                 axios.get('http://localhost:9000/products')
                 .then(res => setProductList(res.data))
                 .catch(err => console.error(err));
             }
-
+            
+            //Reset and clear forms
             event.target.reset();
             handleClear();
         } catch (err) {

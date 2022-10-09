@@ -4,18 +4,19 @@ import { useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import { WarehouseForm } from '../Form/WarehouseForm';
 
+// Row on the upper "Table", containing warehouse information
 const Warehouse = ({warehouse: {_id, manager, phone, location, capacity}}) => {
     return(
             <TableRow>
                 <TableCell>{location}</TableCell>
                 <TableCell>{manager}</TableCell>
                 <TableCell>{phone}</TableCell>
-                <TableCell>{capacity?.current}</TableCell>
                 <TableCell>{capacity?.maximum}</TableCell>
             </TableRow>
     )
 }
 
+// Rows on the lower table, displaying inventory
 const Product = ({inventory: {product, quantity}}) => {
     return (
         <TableRow>
@@ -27,6 +28,7 @@ const Product = ({inventory: {product, quantity}}) => {
 
 export const WarehouseIDTable = () => {
 
+    // Generate appropriate URL for axios request
     const url = useLocation();
     const axiosURL = `http://localhost:9000${url.pathname}`;
 
@@ -37,15 +39,18 @@ export const WarehouseIDTable = () => {
             .catch(err => console.error(err));
     }, []);
 
+    /*
+        Note: if the ternary operator is removed from inside the TableBody, the table rows will NOT display.
+        This seems to be a timing issue with axios requests? I am not entirely sure
+    */
     return(
         <>
-            <h3>Warehouse #{warehouse._id}</h3>
+            <h3>Warehouse: </h3>
             <Table>
                 <TableHead>
                     <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell>Capacity (Used)</TableCell>
                     <TableCell>Capacity (Max)</TableCell>
                 </TableHead>
                 <TableBody>
@@ -69,7 +74,8 @@ export const WarehouseIDTable = () => {
             </Table>
 
             <WarehouseForm warehouseLocation={warehouse.location} warehouseManager={warehouse.manager} warehousePhone={warehouse.phone} 
-                warehouseCapacityMax={warehouse.capacity?.maximum} warehouseCapacityCur={warehouse.capacity?.current} warehouseInventory={warehouse.inventory} 
+                warehouseCapacityMax={warehouse.capacity?.maximum} warehouseCapacityCur={warehouse.capacity?.current} 
+                warehouseInventory={warehouse.inventory} 
                 setWarehouse={setWarehouse} />
         </>
     )

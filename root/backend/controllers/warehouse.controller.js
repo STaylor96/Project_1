@@ -4,6 +4,7 @@ const Warehouse = require('../models/Warehouse.model.js');
 // Read all warehouses
 const findAllWarehouses = async () => await Warehouse.find().populate('inventory');
 
+/* This code was used to populate warehouses via Postman
 const createWarehouse = async warehouseToSave => {
     try {
         const warehouse = new Warehouse(warehouseToSave);
@@ -13,6 +14,7 @@ const createWarehouse = async warehouseToSave => {
         throw err;
     }
 }
+*/
 
 // Read a specific warehouse by ID number
 const findWarehouseById = async id => {
