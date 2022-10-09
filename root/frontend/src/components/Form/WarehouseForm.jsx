@@ -32,8 +32,19 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                 throw new InputError("Invalid data");
             }
 
+            // Prevent exceeding capacity
+            let count = 0;
+            for (let product of warehouseInventory)
+            {
+                count += product.quantity;
+            }
+            // Count is now the current inventory level
+
             if(!isEdit) //Add product
             {
+                // Prevent new product from breaking capacity
+                if ( count + productData.quantity > warehouseCapacityMax)
+                    throw new InputError(`Cannot exceed capacity. Current inventory is ${count}. Please insert amount of ${warehouseCapacityMax - count} or less.`);
                 // Scan warehouse and prevent "adding" a duplicate entry
                 for (let product of warehouseInventory)
                 {
@@ -63,6 +74,17 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                     // If the product found is the selected one
                     if(product.product === productData.product)
                     {  
+                        // Set a placeholder value
+                        let oldCount = count - product.quantity;
+
+                        console.log(oldCount);
+                        console.log(productData.quantity);
+                        console.log(warehouseCapacityMax);
+                        if ( oldCount + productData.quantity > warehouseCapacityMax)
+                        {
+                            throw new InputError(`Cannot exceed capacity. Maximum capacity is ${warehouseCapacityMax}. This product's quantity cannot currently exceed ${warehouseCapacityMax - oldCount}.`)
+                        }
+
                         // Update the quantity
                         product.quantity = productData.quantity
                         // And if it's 0, set deletion flag to 0 and record product's index
