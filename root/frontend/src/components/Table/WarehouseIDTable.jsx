@@ -45,20 +45,20 @@ export const WarehouseIDTable = () => {
     */
     return(
         <>
-            <h3>Warehouse: </h3>
+            <h1>Warehouse </h1>
             <Table>
                 <TableHead>
                     <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell>Capacity (Max)</TableCell>
+                    <TableCell>Maximum Capacity</TableCell>
                 </TableHead>
                 <TableBody>
                     <Warehouse key={warehouse._id} warehouse={warehouse}></Warehouse>
                 </TableBody>
             </Table>
-            
-            <h3>Inventory: </h3>
+            <br></br>
+            <h1>Inventory </h1>
             <Table>
                 <TableHead>
                     <TableCell>Product ID</TableCell>

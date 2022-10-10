@@ -46,6 +46,7 @@ export const ProductTable = () => {
                 {productList.map(product => <Product key={product._id} product={product}/>)}
             </TableBody>
         </Table>
+
         <ProductForm setProductList={setProductList} />
         </>
     );

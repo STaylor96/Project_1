@@ -95,7 +95,7 @@ export const ProductForm = ({setProductList}) => {
 
     return (
         <>
-        <h2>Product Controls</h2>
+        <h3>Product Controls</h3>
         <form onSubmit={handleSubmit}>
         
             <div>
@@ -166,8 +166,7 @@ export const ProductForm = ({setProductList}) => {
             <div>
                 <button class="buttons" type="reset" onClick={handleClear}>Reset</button>
                 <button class="buttons">Submit</button>
-            </div>
-            
+            </div>    
         </form>
        </>
     );

@@ -34,7 +34,7 @@ export const WarehouseTable = () => {
                     <TableCell>Location</TableCell>
                     <TableCell>Manager</TableCell>
                     <TableCell>Phone</TableCell>
-                    <TableCell>Capacity (Max)</TableCell>
+                    <TableCell>Maximum Capacity</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>

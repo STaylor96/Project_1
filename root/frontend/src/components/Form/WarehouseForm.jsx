@@ -144,6 +144,7 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
 
     return (
         <>
+            <br></br><br></br>
             <h2>Inventory Controls</h2>
             <form onSubmit={handleSubmit}>
             <input type="checkbox" id="add" onChange={handleToggle}/>
@@ -176,6 +177,7 @@ export const WarehouseForm = ({warehouseLocation, warehouseManager, warehousePho
                 <button class="buttons">Submit</button>
             </div>
             </form>
+            <br></br>
         </>
     );
 }

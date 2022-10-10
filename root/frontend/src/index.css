@@ -36,6 +36,7 @@ h2{
 }
 
 h3 {
+    margin-left: 10px;
     font-size: 24px;
     color: rgb(200, 100, 107);
     text-align: left;
@@ -51,6 +52,8 @@ form {
     color: black;
     font-style: italic;
     padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
